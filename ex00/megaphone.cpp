@@ -24,9 +24,21 @@ void    ft_megaphone(char *s)
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
+	int	i;
+	
+	if (argc == 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
-	ft_megaphone(argv[1]);
+	}
+	
+	i = 1;
+	while (i < argc)
+	{
+		ft_megaphone(argv[i]);
+		i++;
+	}
+
 	std::cout << std::endl;
 	return (0);
 }

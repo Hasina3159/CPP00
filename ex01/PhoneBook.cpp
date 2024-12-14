@@ -13,7 +13,7 @@ PhoneBook::PhoneBook()
 	m_index = 0;
 }
 
-void PhoneBook::add(std::string first_name, std::string last_name, std::string nickname, std::string phone_number, std::string darkest_secret)
+void PhoneBook::add(const std::string& first_name, const std::string &last_name, const std::string &nickname, const std::string &phone_number, const std::string &darkest_secret)
 {
 	if (first_name == "" || last_name == "" || nickname == "" || phone_number == "" || darkest_secret == "")
 	{
@@ -25,7 +25,7 @@ void PhoneBook::add(std::string first_name, std::string last_name, std::string n
 	m_index++;
 }
 
-void PhoneBook::show_one(std::string const &s, int add_first)
+void PhoneBook::show_one(const std::string  &s, const int &add_first) const
 {
 	size_t	i{0};
 
@@ -37,16 +37,20 @@ void PhoneBook::show_one(std::string const &s, int add_first)
 		i++;
 	}
 	i = 0;
-	while (s[i] && i < 10)
+	while (s[i] && i < 9)
 	{
 		std::cout << s[i] << std::flush;
 		i++;
 	}
+	if (s.length() > 10)
+		std::cout << "." << std::flush;
+	else if (s[i] && i == 9)
+		std::cout << s[i] << std::flush;
 	std::cout << "|" << std::flush;
 	return ;
 }
 
-void PhoneBook::show_all(int index)
+void PhoneBook::show_all(const int &index) const
 {
 	std::string	i("0");
 	i[0] = index + '0';
@@ -59,15 +63,25 @@ void PhoneBook::show_all(int index)
 	return ;
 }
 
-void PhoneBook::Search(int index)
+void PhoneBook::show_basic(const int &index) const
 {
-	int	i{0};
+	std::string	i("0");
+	i[0] = index + '0';
+	show_one(i, 1);
+	show_one(m_contacts[index].get_fname(), 0);
+	show_one(m_contacts[index].get_lname(), 0);
+	show_one(m_contacts[index].get_nname(), 0);
+	return ;
+}
 
-	while (i < 8)
-	{
-		show_all(i);
-		std::cout << std::endl;
-		i++;
-	}
-	show_all(index);
+void PhoneBook::Search(const int &index) const
+{
+	if (index >= 0 && index <= m_index)
+		show_all(index);
+	std::cout << std::endl;
+}
+
+int		PhoneBook::get_max_index() const
+{
+	return (m_index);
 }

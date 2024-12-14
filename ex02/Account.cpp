@@ -85,7 +85,6 @@ int		Account::checkAmount( void ) const
 
 void	Account::displayStatus( void ) const
 {
-	//[19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 	std::cout << "[" << std::flush;
 	_displayTimestamp();
 	std::cout << "] " << "index:" << _accountIndex << ";amount:" << _amount << std::flush;

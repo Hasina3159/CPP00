@@ -11,12 +11,12 @@ private:
     std::string m_darkest_secret;
 public:
     Contact();
-    Contact(std::string first_name, std::string last_name, std::string nickname, std::string phone_number, std::string darkest_secret);
-    std::string get_fname();
-    std::string get_lname();
-    std::string get_nname();
-    std::string get_phnumber();
-    std::string get_dsecret();
+    Contact(const std::string &first_name, const std::string &last_name, const std::string &nickname, const std::string &phone_number, const std::string &darkest_secret);
+    std::string get_fname() const;
+    std::string get_lname() const;
+    std::string get_nname() const;
+    std::string get_phnumber() const;
+    std::string get_dsecret() const;
 };
 
 #endif
