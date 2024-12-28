@@ -17,7 +17,7 @@ void PhoneBook::add(const std::string& first_name, const std::string &last_name,
 {
 	if (first_name == "" || last_name == "" || nickname == "" || phone_number == "" || darkest_secret == "")
 	{
-		perror("Phonebook::add -> ValueError!\n");
+		std::cerr << "Phonebook::add -> ValueError!" << std::endl;
 		return ;
 	}
 	m_index = m_index % 8;
@@ -27,7 +27,7 @@ void PhoneBook::add(const std::string& first_name, const std::string &last_name,
 
 void PhoneBook::show_one(const std::string  &s, const int &add_first) const
 {
-	size_t	i{0};
+	size_t	i = 0;
 
 	if (add_first)
 		std::cout << "|" << std::flush;

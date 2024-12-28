@@ -1,7 +1,7 @@
 #include "Account.hpp"
 #include <iostream>
-#include <chrono>
 #include <ctime>
+#include <cstdio>
 #include <iomanip>
 
 int Account::_nbAccounts = 0;
@@ -93,8 +93,10 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-	auto now = std::chrono::system_clock::now();
-	std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
-    std::tm* localTime = std::localtime(&currentTime);
-	std::cout << std::put_time(localTime, "%Y%m%d_%H%M%S") << std::flush;
+    std::time_t now 		= std::time(0);
+    struct tm 	*localTime 	= std::localtime(&now);
+    char 		buffer[20];
+    std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", localTime);
+    
+	std::cout << buffer << std::flush;
 }

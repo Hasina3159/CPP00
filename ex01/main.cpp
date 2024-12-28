@@ -4,8 +4,8 @@
 
 std::string read_data(const std::string &name)
 {
-	std::string data{ "" };
-	bool		is_not_first_loop{ false };
+	std::string data 				= "";
+	bool		is_not_first_loop	= false;
 	do
 	{
 		if (is_not_first_loop)
@@ -13,6 +13,8 @@ std::string read_data(const std::string &name)
 
 		std::cout << name << ">> " << std::flush;
 		std::getline (std::cin, data);
+		if (std::cin.eof())
+			exit (0);
 		is_not_first_loop = true;
 	} while (data.empty());
 	return (data);
@@ -22,20 +24,27 @@ std::string read_data(const std::string &name)
 int main(void)
 {
 	PhoneBook   ph;
-	std::string cmd{""}, first_name{""}, last_name{""}, nickname{""}, phone_number{""}, darkest_secret{""}, tmp{""};
-	int			index{0}, max_index{0};
-	bool		is_index_valid{true};
+	std::string cmd 			= "", 
+				first_name 		= "",
+				last_name 		= "",
+				nickname 		= "",
+				phone_number 	= "",
+				darkest_secret	= "",
+				tmp 			= "";
+	int			index 			= 0,
+				max_index 		= 0;
+	bool		is_index_valid	= true;
 
 	do
 	{
 		cmd = read_data("COMMAND");
 		if (cmd == "ADD")
 		{
-			first_name = read_data("First name");
-			last_name = read_data("Last name");
-			nickname = read_data("Nickname");
-			phone_number = read_data("Phone number");
-			darkest_secret = read_data("Darkest Secret");
+			first_name 			= read_data("First name");
+			last_name 			= read_data("Last name");
+			nickname 			= read_data("Nickname");
+			phone_number 		= read_data("Phone number");
+			darkest_secret		= read_data("Darkest Secret");
 			ph.add(first_name, last_name, nickname,phone_number, darkest_secret);
 		}
 		else if (cmd == "SEARCH")
@@ -47,9 +56,9 @@ int main(void)
 				std::cout << std::endl;
 			}
 			std::getline (std::cin, tmp);
-			for (auto &c : tmp)
+			for (size_t i = 0; i < tmp.length(); i++)
 			{
-				if (!isdigit(c))
+				if (!isdigit(tmp[i]))
 				{
 					is_index_valid = false;
 					break;
