@@ -1,3 +1,15 @@
+/******************************************************************************/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ntodisoa <ntodisoa@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/29 11:29:28 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/12/29 11:30:05 by ntodisoa         ###   ########.fr       */
+/*                                                                            */
+/******************************************************************************/
+
 #include "Contact.hpp"
 
 Contact::Contact() : m_first_name(""), m_last_name(""), m_nickname(""), m_phone_number(""), m_darkest_secret("")
