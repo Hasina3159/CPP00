@@ -52,14 +52,12 @@ void PhoneBook::show_one(const std::string  &s, const int &add_first) const
 
 void PhoneBook::show_all(const int &index) const
 {
-	std::string	i("0");
-	i[0] = index + '0';
-	show_one(i, 1);
-	show_one(m_contacts[index].get_fname(), 0);
-	show_one(m_contacts[index].get_lname(), 0);
-	show_one(m_contacts[index].get_nname(), 0);
-	show_one(m_contacts[index].get_phnumber(), 0);
-	show_one(m_contacts[index].get_dsecret(), 0);
+	std::cout << "Index\t\t: " << index << std::endl;
+	std::cout << "First Name\t: " << (m_contacts[index].get_fname()) << std::endl;
+	std::cout << "Last name\t: " << (m_contacts[index].get_lname()) << std::endl;
+	std::cout << "Nick name\t: " << (m_contacts[index].get_nname()) << std::endl;
+	std::cout << "Phone number\t: " << (m_contacts[index].get_phnumber()) << std::endl;
+	std::cout << "Darkest secret\t: " << (m_contacts[index].get_dsecret()) << std::endl;
 	return ;
 }
 

@@ -11,7 +11,7 @@ std::string read_data(const std::string &name)
 		if (is_not_first_loop)
 			std::cout << name << " cannot be empty!" << std::endl;
 
-		std::cout << name << ">> " << std::flush;
+		std::cout << name << "> " << std::flush;
 		std::getline (std::cin, data);
 		if (std::cin.eof())
 			exit (0);
@@ -31,7 +31,7 @@ int main(void)
 				phone_number 	= "",
 				darkest_secret	= "",
 				tmp 			= "";
-	int			index 			= 0,
+	int			index 			= -1,
 				max_index 		= 0;
 	bool		is_index_valid	= true;
 
@@ -40,21 +40,24 @@ int main(void)
 		cmd = read_data("COMMAND");
 		if (cmd == "ADD")
 		{
-			first_name 			= read_data("First name");
-			last_name 			= read_data("Last name");
-			nickname 			= read_data("Nickname");
-			phone_number 		= read_data("Phone number");
-			darkest_secret		= read_data("Darkest Secret");
+			first_name 			= read_data("ADD    > First name");    
+			last_name 			= read_data("ADD    > Last name");    
+			nickname 			= read_data("ADD    > Nickname");    
+			phone_number 		= read_data("ADD    > Phone number");    
+			darkest_secret		= read_data("ADD    > Darkest Secret");
 			ph.add(first_name, last_name, nickname,phone_number, darkest_secret);
 		}
 		else if (cmd == "SEARCH")
 		{
+			index = -1;
 			max_index = ph.get_max_index();
 			for(int i = 0; i < max_index; i++)
 			{
 				ph.show_basic(i);
 				std::cout << std::endl;
 			}
+			std::cout << "SEARCH > Index > " << std::flush;
+
 			std::getline (std::cin, tmp);
 			for (size_t i = 0; i < tmp.length(); i++)
 			{
@@ -65,7 +68,7 @@ int main(void)
 				}
 			}
 			index = atoi(tmp.c_str());
-			if (!is_index_valid || index < 0 || index > ph.get_max_index() - 1)
+			if (!is_index_valid || index < 0 || index > ph.get_max_index() - 1 || tmp.empty())
 				continue;
 
 			ph.Search(index);
