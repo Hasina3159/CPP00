@@ -13,9 +13,11 @@ class PhoneBook
   public:
 	PhoneBook();
 	//~PhoneBook();
-	void	add(const std::string& first_name, const std::string &last_name,
-		const std::string &nickname, const std::string &phone_number,
-		const std::string &darkest_secret);
+	void	add(
+			const std::string& first_name, const std::string &last_name,
+			const std::string &nickname, const std::string &phone_number,
+			const std::string &darkest_secret
+		);
 	void	Search(const int &index) const;
 	int		get_max_index() const;
 	void	show_all(const int &index) const;
